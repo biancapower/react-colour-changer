@@ -2,9 +2,10 @@ class ColourShower extends React.Component {
 
   render() {
     var c = this.props.colour
-    var myColour = 'rgb(' + c.red + ',' + c.green + ',' + c.blue + ')'
+    var myBackgroundColour = 'rgb(' + c.red + ',' + c.green + ',' + c.blue + ')'
+    var myColour = 'rgb(' + (255 - c.red) + ',' + (255 - c.green) + ',' + (255 - c.blue) + ')'
     return(
-      <div style={{color: myColour,}}>{'Change me'}</div>
+      <div style={{'background-color': myBackgroundColour, color: myColour}} className="p-5">{'Change me'}</div>
     )
   }
 }
@@ -27,11 +28,11 @@ class NumberChanger extends React.Component {
   render() {
     return(
       <div>
-        <button value={-10} onClick={this.handleClick}>
+        <button value={-10} onClick={this.handleClick} className="btn btn-dark p-2">
           -
         </button>
-        <span>{this.props.colour}</span>
-        <button value={10} onClick={this.handleClick}>
+        <span className="p-5">{this.props.colour}</span>
+        <button value={10} onClick={this.handleClick} className="btn btn-dark p-2">
           +
         </button>
       </div>
@@ -42,7 +43,7 @@ class NumberChanger extends React.Component {
 class ColourPicker extends React.Component {
   constructor() {
     super();
-    this.state = { red: 200, green: 100, blue: 100 }
+    this.state = { red: 50, green: 200, blue: 200 }
   }
   render() {
     return [
@@ -66,7 +67,6 @@ class ColourPicker extends React.Component {
 class App extends React.Component {
   constructor() {
     super();
-    // this.handleClick = this.handleClick.bind(this)
   }
 
   render() {
